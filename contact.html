@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - BaseCrypt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between px-8 py-6 bg-gray-800">
+        <h1 class="text-4xl font-extrabold text-blue-500">BaseCrypt</h1>
+        <nav class="space-x-6">
+            <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+            <a href="about.html" class="hover:text-blue-400 transition">About</a>
+            <a href="contact.html" class="hover:text-blue-400 transition">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main class="px-8 py-16">
+        <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold mb-8 text-center text-blue-500">Kontak Kami</h2>
+            <p class="text-lg mb-6 text-center">Kami senang mendengar umpan balik dari Anda. Jika Anda memiliki pertanyaan atau masukan, silakan hubungi kami melalui formulir di bawah ini.</p>
+
+            <!-- Contact Form -->
+            <form id="contact-form" name="contact" method="POST" action="/thankyou.html" data-netlify="true">
+                <div class="mb-6">
+                    <label for="name" class="block text-lg font-semibold mb-2">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" class="w-full p-4 text-black rounded-md bg-gray-200" placeholder="Masukkan nama Anda" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="email" class="block text-lg font-semibold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-4 text-black rounded-md bg-gray-200" placeholder="Masukkan email Anda" required>
+                </div>
+
+                <div class="mb-6">
+                    <label for="message" class="block text-lg font-semibold mb-2">Pesan</label>
+                    <textarea id="message" name="message" class="w-full p-4 text-black rounded-md bg-gray-200" rows="6" placeholder="Tuliskan pesan Anda" required></textarea>
+                </div>
+
+                <div class="flex justify-center">
+                    <button id="submit-button" type="submit" class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-6 rounded-md transition flex items-center justify-center">
+                        <span id="button-text">Kirim Pesan</span>
+                        <i id="loading-icon" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-center py-6 mt-16">
+        <p>&copy; 2025 BaseCrypt. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Script to Handle Button State Change -->
+    <script>
+        const form = document.getElementById("contact-form");
+        const submitButton = document.getElementById("submit-button");
+        const buttonText = document.getElementById("button-text");
+        const loadingIcon = document.getElementById("loading-icon");
+
+        form.addEventListener("submit", function(event) {
+            // Prevent form submission until we show loading animation
+            event.preventDefault();
+
+            // Change button text and show loading spinner
+            buttonText.textContent = "Mengirim...";
+            loadingIcon.classList.remove("hidden");
+
+            // Simulate form submission delay (useful for demo purposes)
+            setTimeout(function() {
+                // Reset the form and button state
+                form.reset();
+                buttonText.textContent = "Kirim Pesan";
+                loadingIcon.classList.add("hidden");
+
+                // Redirect to thank you page
+                window.location.href = '/thankyou.html';
+            }, 2000); // Simulate a delay of 2 seconds
+        });
+    </script>
+
+</body>
+
+</html>
